@@ -25,5 +25,5 @@ function config (  $routeProvider,   $locationProvider  )  {
 HomeIndexController.$inject=[];
 function HomeIndexController() {
   var vm = this;
-  vm.greeting = "what's up?"
+  vm.greeting = "what's up Cory?"
 };
