@@ -22,8 +22,35 @@ function config (  $routeProvider,   $locationProvider  )  {
     });
 };
 
-HomeIndexController.$inject=[];
-function HomeIndexController() {
+
+HomeIndexController.$inject=['$http'];
+function HomeIndexController($http) {
   var vm = this;
-  vm.greeting = "what's up Cory?"
+  console.log('AAAAAAAAHHHHH')
+  $http({
+    method: 'GET',
+    url: '/api/todos'
+  }).then(function successCallback(response) {
+    console.log('response for all todos:', response);
+    // probably do something with the response data
+  }, function errorCallback(error) {
+    console.log('There was an error getting the data', error);
+  });
+
+};
+
+HomeShowController.$inject=['$http', '$routeParams'];
+function HomeShowController($http, $routeParams) {
+  var vm = this;
+  var todoId = $routeParams.id;
+  $http({
+    method: 'GET',
+    url: '/api/todos' + 'todoId'
+  }).then(function successCallback(response) {
+    console.log('response for all todos:', response);
+    // probably do something with the response data
+  }, function errorCallback(error) {
+    console.log('There was an error getting the data', error);
+  });
+
 };

@@ -5,6 +5,11 @@ class Api::TodosController < ApplicationController
     render json: @todos
   end
 
+  def show
+    @todo = Todo.find_by_id(params[:id])
+    render json: @todo
+  end
+
   def create
     @todo = Todo.new(todo_params)
     if @todo.save
@@ -14,7 +19,7 @@ class Api::TodosController < ApplicationController
     end
   end
 
-  
+
 
   private
   def todo_params
