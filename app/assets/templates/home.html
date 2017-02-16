@@ -51,18 +51,22 @@
       <img class="img-responsive col-m-4" ng-src={{book.image}} alt="Book image">
     </div> -->
 
-    <div class="col-md-9 col-xs-12">
-        <ul class="list-group form-inline">
-          <li class="list-group-item">
-            <h5 class="inline-header">Title:</h5>
-            <span> <a ng-href="/todos/{{todo._id}}">{{todo.title}}</span></a>
-            <h5 class="inline-header">Description:</h5>
-            <span>{{todo.description}}</span>
-          </li>
-        </ul>
-    </div>
-
+<h4>Todos:</h4>
+  <div ng-repeat="todo in homeIndexCtrl.todos">
+    <!-- <div class="row">
+      <div class="col-md-1">
+        <input type="checkbox" name="" value="">
+      </div> -->
+      <hr>
+      <div class="col-md-2">
+        {{todo.title}}
+      </div>
+      <div class="col-md-6">
+        -{{todo.description}}
+      </div>
   </div>
+</div>
+
 <!-- Here, make the HTML for how you want each book to display.
 Use ng-model to fill in data.
 Make sure you display an image, the title, and the author.

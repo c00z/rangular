@@ -24,47 +24,32 @@ function config (  $routeProvider,   $locationProvider  )  {
 
 
 HomeIndexController.$inject=['$http'];
-function HomeIndexController($http) {
+function HomeIndexController($http){
   var vm = this;
-  console.log('AAAAAAAAHHHHH')
+  vm.greeting = "what's up?";
+  vm.newTodo = {};
+
   $http({
     method: 'GET',
     url: '/api/todos'
   }).then(function successCallback(response) {
-    console.log('response for all todos:', response);
-    // probably do something with the response data
-  }, function errorCallback(error) {
-    console.log('There was an error getting the data', error);
-  });
+     console.log('response for get one', response);
+     vm.todos = response.data
+   }, function errorCallback(error) {
+     console.log('There was an error getting the data', error);
+   });
 
-};
-
-HomeShowController.$inject=['$http', '$routeParams'];
-function HomeShowController($http, $routeParams) {
-  var vm = this;
-  var todoId = $routeParams.id;
-  $http({
-    method: 'GET',
-    url: '/api/todos' + 'todoId'
-  }).then(function successCallback(response) {
-    console.log('response for all todos:', response);
-    // probably do something with the response data
-  }, function errorCallback(error) {
-    console.log('There was an error getting the data', error);
-  });
-
-  vm.createTodo = function () {
-  $http({
-    method: 'POST',
-    url: '/',
-    data: vm.newTodo,
-  }).then(function successCallback(response) {
-      console.log('create new todo:', response);
-    vm.todos.push(response.data);
-  }, function errorCallback(response) {
-    console.log('There was an error posting the data', response);
-  });
+   vm.createTodo = function (){
+     $http({
+       method: 'POST',
+       url: '/api/todos',
+       data: vm.newTodo
+     }).then(function successCallback(response) {
+       console.log('response for create todo:', response);
+       vm.todos.push(response.data);
+       vm.newTodo = null
+     }, function errorCallback(error) {
+       console.log('There was an creating the todo', error);
+     });
+   };
 }
-
-
-};
