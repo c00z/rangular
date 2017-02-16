@@ -53,4 +53,18 @@ function HomeShowController($http, $routeParams) {
     console.log('There was an error getting the data', error);
   });
 
+  vm.createTodo = function () {
+  $http({
+    method: 'POST',
+    url: '/',
+    data: vm.newTodo,
+  }).then(function successCallback(response) {
+      console.log('create new todo:', response);
+    vm.todos.push(response.data);
+  }, function errorCallback(response) {
+    console.log('There was an error posting the data', response);
+  });
+}
+
+
 };
