@@ -24,50 +24,25 @@
                   <input ng-model="homeIndexCtrl.newTodo.description" type="text" class="form-control input-md">
                   </div>
                 </div>
-                <!-- Button -->
-                <!-- <div class="form-group"> -->
-                  <!-- <label class="col-md-4 control-label">Save</label> -->
+
                   <div class="col-md-4 col-md-offset-4">
                     <button class="btn btn-warning">Submit</button>
                   </div>
-                <!-- </div> -->
               </fieldset>
             </form>
           </div>
       </div>
-        <hr>
-
-
-
-<!-- <input type="text" class="form-control" ng-model="searchText" placeholder="Search Books">
-<div ng-repeat="book in booksIndexCtrl.books | orderBy: 'title' | filter: searchText" class="row">
-
-
-<hr> -->
-<!-- Book display information -->
-  <!-- <div class="row"> -->
-
-    <!-- <div class="col-md-3 col-xs-12 thumbnail">
-      <img class="img-responsive col-m-4" ng-src={{book.image}} alt="Book image">
-    </div> -->
-
-<h4>Todos:</h4>
-  <div ng-repeat="todo in homeIndexCtrl.todos">
-    <!-- <div class="row">
-      <div class="col-md-1">
-        <input type="checkbox" name="" value="">
-      </div> -->
       <hr>
-      <div class="col-md-2">
-        {{todo.title}}
-      </div>
-      <div class="col-md-6">
-        -{{todo.description}}
-      </div>
-  </div>
-</div>
 
-<!-- Here, make the HTML for how you want each book to display.
-Use ng-model to fill in data.
-Make sure you display an image, the title, and the author.
-The title should be a link to the specific book view. -->
+  <!-- DISPLAY -->
+  <h4>Todos:</h4>
+    <div ng-repeat="todo in homeIndexCtrl.todos">
+        <hr>
+        <div class="col-md-2">
+          {{todo.title}}
+        </div>
+        <div class="col-md-6">
+          -{{todo.description}}
+        </div>
+    </div>
+  </div>
